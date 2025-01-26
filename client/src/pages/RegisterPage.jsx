@@ -22,7 +22,6 @@ const RegisterPage = () => {
       [name]: name === "profileImage" ? files[0] : value,
     });
   };
-  console.log(formData);
 
   const [passwordMatch, setPasswordMatch] = useState(true);
 
@@ -51,7 +50,7 @@ const RegisterPage = () => {
       });
 
       if (response.ok) {
-        navigate("./login");
+        navigate("/login");
       }
     } catch (err) {
       console.log("Registration failed", err.message);
@@ -68,22 +67,22 @@ const RegisterPage = () => {
             value={formData.firstName}
             onChange={handleChange}
             required
-          ></input>
+          />
           <input
             placeholder="Last Name"
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
             required
-          ></input>
+          />
           <input
             placeholder="Email"
             name="email"
+            type="email"
             value={formData.email}
             onChange={handleChange}
-            type="email"
             required
-          ></input>
+          />
           <input
             placeholder="Password"
             name="password"
@@ -91,7 +90,7 @@ const RegisterPage = () => {
             onChange={handleChange}
             type="password"
             required
-          ></input>
+          />
           <input
             placeholder="Confirm Password"
             name="confirmPassword"
@@ -99,7 +98,7 @@ const RegisterPage = () => {
             onChange={handleChange}
             type="password"
             required
-          ></input>
+          />
 
           {!passwordMatch && (
             <p style={{ color: "red" }}>Passwords are not matched!</p>
@@ -132,7 +131,7 @@ const RegisterPage = () => {
             REGISTER
           </button>
         </form>
-        <a href="./login">Already have an account? Log In Here</a>
+        <a href="/login">Already have an account? Log In Here</a>
       </div>
     </div>
   );

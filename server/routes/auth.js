@@ -27,7 +27,7 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
     const profileImage = req.file;
 
     if (!profileImage) {
-      return res.statue(400).send("No file uploaded");
+      return res.status(400).send("No file uploaded");
     }
 
     /* Create path to the uploaded profile photo*/
@@ -36,12 +36,12 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
     /* Check if user exists*/
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.statue(400).json({ message: "User already exists!" });
+      return res.status(400).json({ message: "User already exists!" });
     }
 
     /* Has the  password */
     const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password.salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     /* Create a new User*/
     const newUser = new User({
