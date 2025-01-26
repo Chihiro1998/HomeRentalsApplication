@@ -29,10 +29,6 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
-    tripList: {
-      type: Array,
-      default: [],
-    },
     wishList: {
       type: Array,
       default: [],

@@ -4,9 +4,14 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 
+const authRoutes = require("./routes/auth");
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+
+/* ROUTES*/
+app.use("./auth", authRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = 3001;
