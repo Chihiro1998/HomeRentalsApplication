@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Register.scss";
 
@@ -15,10 +15,8 @@ const RegisterPage = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData({
-      // Create a copy of the exist form data
       ...formData,
       [name]: value,
-      // Update the corresponding value according to the name
       [name]: name === "profileImage" ? files[0] : value,
     });
   };
@@ -106,27 +104,25 @@ const RegisterPage = () => {
 
           <input
             id="image"
-            name="profileImage"
             type="file"
+            name="profileImage"
             accept="image/*"
             style={{ display: "none" }}
             onChange={handleChange}
             required
-          ></input>
+          />
           <label htmlFor="image">
-            <img src="/assets/addImage.png" alt="add profile photo"></img>
+            <img src="/assets/addImage.png" alt="add profile photo" />
             <p>Upload Your Photo</p>
           </label>
 
           {formData.profileImage && (
-            // Create a URL for Selected file, this URL can be used to display the photo
             <img
               src={URL.createObjectURL(formData.profileImage)}
               alt="profile photo"
               style={{ maxWidth: "80px" }}
             />
           )}
-
           <button type="submit" disabled={!passwordMatch}>
             REGISTER
           </button>
