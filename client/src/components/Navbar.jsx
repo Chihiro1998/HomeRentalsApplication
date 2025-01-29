@@ -37,7 +37,7 @@ const Navbar = () => {
 
         <button
           className="navbar_right_account"
-          onClick={() => setDropdownMenu(true)}
+          onClick={() => setDropdownMenu(!dropdownMenu)}
         >
           <Menu sx={{ color: variables.darkgrey }} />
           {!user ? (
