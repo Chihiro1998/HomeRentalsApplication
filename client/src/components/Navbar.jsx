@@ -2,6 +2,7 @@ import { Menu, Person, Search } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import "../styles/Navbar.scss";
 import variables from "../styles/variables.scss";
 
 const Navbar = () => {
@@ -21,9 +22,13 @@ const Navbar = () => {
 
       <div className="navbar_right">
         {user ? (
-          <a href="/create-listing">Become A Host</a>
+          <a href="/create-listing" className="host">
+            Become A Host
+          </a>
         ) : (
-          <a href="/login">Become A Host</a>
+          <a href="/login" className="host">
+            Become A Host
+          </a>
         )}
 
         <button className="navbar_right_account">
