@@ -1,5 +1,6 @@
 import React from "react";
 import Categories from "../components/Categories";
+import Listings from "../components/Listings";
 import Navbar from "../components/Navbar";
 import Slide from "../components/Slide";
 
@@ -9,6 +10,7 @@ const HomePage = () => {
       <Navbar />
       <Slide />
       <Categories />
+      <Listings />
     </>
   );
 };
