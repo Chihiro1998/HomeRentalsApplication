@@ -55,9 +55,31 @@ const Listings = () => {
         <Loader />
       ) : (
         <div className="listings">
-          {listings.map((listing) => (
-            <ListingCard />
-          ))}
+          {listings.map(
+            ({
+              _id,
+              creator,
+              listingPhotoPaths,
+              city,
+              province,
+              country,
+              category,
+              types,
+              price,
+            }) => (
+              <ListingCard
+                listingId={_id}
+                creator={creator}
+                listingPhotoPaths={listingPhotoPaths}
+                city={city}
+                province={province}
+                country={country}
+                category={category}
+                types={types}
+                price={price}
+              />
+            )
+          )}
         </div>
       )}
     </>
