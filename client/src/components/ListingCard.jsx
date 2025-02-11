@@ -37,10 +37,20 @@ const ListingCard = (
                 src={`http://localhost:3001/${photo.replace("public", "")}`}
                 alt={`photo ${index + 1}`}
               />
-              <div className="prev-button">
+              <div
+                className="prev-button"
+                onClick={(e) => {
+                  goToPrevSLide(e);
+                }}
+              >
                 <ArrowBackIosNew sx={{ fontSize: "15px" }} />
               </div>
-              <div className="next-button">
+              <div
+                className="next-button"
+                onClick={(e) => {
+                  goToNextSLide(e);
+                }}
+              >
                 <ArrowForwardIos sx={{ fontSize: "15px" }} />
               </div>
             </div>;
