@@ -141,7 +141,7 @@ router.get("/:listingId", async (req, res) => {
   } catch (err) {
     res
       .status(404)
-      .json({ message: "Listing can not found!", error: err.message });
+      .json({ message: "The listing can not found!", error: err.message });
   }
 });
 
