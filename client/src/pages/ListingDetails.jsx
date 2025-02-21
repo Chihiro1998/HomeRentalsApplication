@@ -31,6 +31,35 @@ const ListingDetails = () => {
         <h1>{listing.title}</h1>
         <div></div>
       </div>
+      <div className="photos">
+        {listing.listingPhotoPaths?.map((item) => (
+          <img
+            src={`http:localhost:3001/${item.replace("public", "")}`}
+            alt="listing photo"
+          />
+        ))}
+      </div>
+
+      <h2>
+        {listing.type} in {listing.city},{listing.province},{listing.country}
+      </h2>
+      <p>
+        {listing.guestCount} guests - {listing.bedroomCount} bedroom(s) -
+        {listing.bedCount} bed(s) - {listing.bathroomCount} bathroom(s)
+      </p>
+      <hr />
+
+      <div className="profile">
+        <img
+          src={`http:localhost:3001/${listing.creator.profileImagePath.replace(
+            "public",
+            ""
+          )}`}
+        />
+        <h3>
+          Hosted by {listing.creator.firstName} {listing.creator.lastName}{" "}
+        </h3>
+      </div>
     </div>
   );
 };
