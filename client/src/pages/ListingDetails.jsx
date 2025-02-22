@@ -57,9 +57,21 @@ const ListingDetails = () => {
           )}`}
         />
         <h3>
-          Hosted by {listing.creator.firstName} {listing.creator.lastName}{" "}
+          Hosted by {listing.creator.firstName} {listing.creator.lastName}
         </h3>
       </div>
+
+      <hr />
+
+      <h3>Description</h3>
+      <p>{listing.description}</p>
+      <hr />
+
+      <h3>{listing.highlight}</h3>
+      <p>{listing.highlightDesc}</p>
+      <hr />
+
+      <div className="booking"></div>
     </div>
   );
 };
