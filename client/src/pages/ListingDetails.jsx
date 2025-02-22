@@ -31,6 +31,18 @@ const ListingDetails = () => {
   }, []);
 
   /*BOOKING CALENDER*/
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+
+  const handleSelect = (ranges) => {
+    //Update the selected date range when user makes a selection
+    setDateRange([ranges.selection]);
+  };
 
   return (
     <div className="listing-details">
