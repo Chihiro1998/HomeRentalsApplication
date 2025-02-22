@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import { facilities } from "../data";
 import "../styles/ListingDetails.scss";
 
+import { DateRange } from "react-date-range";
+import "react-date-range/dist/style.css";
+import "react-date-range/dist/theme/default.css";
+
 const ListingDetails = () => {
   const [loading, setLoading] = useState(true);
   const { listingId } = useParams();
@@ -25,6 +29,8 @@ const ListingDetails = () => {
   useEffect(() => {
     getListingDetails();
   }, []);
+
+  /*BOOKING CALENDER*/
 
   return (
     <div className="listing-details">
@@ -89,7 +95,9 @@ const ListingDetails = () => {
 
         <div>
           <h2>How long do you want to stay?</h2>
-          <div className="date-range-calender"></div>
+          <div className="date-range-calender">
+            <DateRange />
+          </div>
         </div>
       </div>
     </div>
