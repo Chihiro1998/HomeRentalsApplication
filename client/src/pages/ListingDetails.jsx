@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { facilities } from "../data";
 import "../styles/ListingDetails.scss";
 
 const ListingDetails = () => {
@@ -71,7 +72,26 @@ const ListingDetails = () => {
       <p>{listing.highlightDesc}</p>
       <hr />
 
-      <div className="booking"></div>
+      <div className="booking">
+        <div>
+          <h2>What this place offers?</h2>
+          <div className="amenities">
+            {listing.amenities[0].split(",").map((item, index) => (
+              <div className="facility" key={index}>
+                <div className="facility_icon">
+                  {facilities.find((facility) => facility.name === item)?.icon}
+                </div>
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2>How long do you want to stay?</h2>
+          <div className="date-range-calender"></div>
+        </div>
+      </div>
     </div>
   );
 };
