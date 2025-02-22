@@ -4,7 +4,7 @@ import { facilities } from "../data";
 import "../styles/ListingDetails.scss";
 
 import { DateRange } from "react-date-range";
-import "react-date-range/dist/style.css";
+import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
 const ListingDetails = () => {
@@ -43,6 +43,10 @@ const ListingDetails = () => {
     //Update the selected date range when user makes a selection
     setDateRange([ranges.selection]);
   };
+
+  const start = new Date(dateRange[0].startDate);
+  const end = new Date(dateRange[0].endDate);
+  const dayCount = Math.round(end - start) / (1000 * 60 * 60 * 20); // Calculate the difference in date unit
 
   return (
     <div className="listing-details">
@@ -108,7 +112,17 @@ const ListingDetails = () => {
         <div>
           <h2>How long do you want to stay?</h2>
           <div className="date-range-calender">
-            <DateRange />
+            <DateRange ranges={dateRange} onChange={handleSelect} />
+            {dayCount > 1 ? (
+              <h2>
+                ${listing.price} X {dayCount} nights{" "}
+              </h2>
+            ) : (
+              <h2>
+                ${listing.price} X {dayCount} night{" "}
+              </h2>
+            )}
+            <h2>Total price:${listing.price * dayCount}</h2>
           </div>
         </div>
       </div>
