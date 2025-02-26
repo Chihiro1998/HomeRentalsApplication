@@ -9,16 +9,14 @@ import Loader from "./Loader";
 const Listings = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-
   const [selectedCategory, setSelectedCategory] = useState("All");
-
   const listings = useSelector((state) => state.listings);
 
   const getFeedListings = async () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
-          ? `http://localhost:3001/properties?category = ${selectedCategory}`
+          ? `http://localhost:3001/properties?category=${selectedCategory}`
           : "http://localhost:3001/properties",
         { method: "GET" }
       );
@@ -35,14 +33,13 @@ const Listings = () => {
     getFeedListings();
   }, [selectedCategory]);
 
-  console.log(listings);
   return (
     <>
       <div className="category-list">
         {categories?.map((category, index) => (
           <div
             className="category"
-            key={index}
+            key={category.id || index}
             onClick={() => setSelectedCategory(category.label)}
           >
             <div className="category_icon">{category.icon}</div>
@@ -56,18 +53,22 @@ const Listings = () => {
       ) : (
         <div className="listings">
           {listings.map(
-            ({
-              _id,
-              creator,
-              listingPhotoPaths,
-              city,
-              province,
-              country,
-              category,
-              types,
-              price,
-            }) => (
+            (
+              {
+                _id,
+                creator,
+                listingPhotoPaths,
+                city,
+                province,
+                country,
+                category,
+                types,
+                price,
+              },
+              index
+            ) => (
               <ListingCard
+                key={_id || index}
                 listingId={_id}
                 creator={creator}
                 listingPhotoPaths={listingPhotoPaths}
